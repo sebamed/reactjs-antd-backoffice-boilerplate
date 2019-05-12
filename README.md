@@ -3,7 +3,7 @@
 ### Subsystems:
 
 1. Auth:
-  * Sign in - 
+     * 1.1: Sign in
 
 # Built on top of [React Redux Application Boilerplate](https://github.com/sebamed/react-js-boilerplate)
 
