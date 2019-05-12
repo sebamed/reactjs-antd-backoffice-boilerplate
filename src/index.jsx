@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Router } from 'react-router-dom';
 
 import store from './store/store';
-import history from './utils/config/history';
+import history from './config/history';
 import App from './components/app'
 import { IntlProvider } from 'react-intl';
 import { en } from './assets/i18n/en'

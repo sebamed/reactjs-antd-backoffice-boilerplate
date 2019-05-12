@@ -2,7 +2,7 @@ import { reject } from "q";
 import { put } from 'redux-saga/effects';
 
 import * as actions from '../actions';
-import http from '../../utils/config/http';
+import http from '../../config/http';
 import { API_USER_ALL } from "../../utils/consts/api";
 
 export function* getAllUsersSaga() {
