@@ -1,4 +1,11 @@
-# React Redux Application Boilerplate
+# React Ant Design Backoffice Boilerplate
+
+### Subsystems:
+
+1. Auth:
+  * Sign in - 
+
+# Built on top of [React Redux Application Boilerplate](https://github.com/sebamed/react-js-boilerplate)
 
 This project can be used as a rough start for your new React app.
 
