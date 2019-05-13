@@ -6,15 +6,19 @@ export const en = {
 
         'title.sign-in': 'Sign in here!',
         'title.forgot-password': 'Forgot Your password?',
+        'title.reset-password': 'Reset Your password!',
         
         'subtitle.sign-in': 'Fill in your credentials!',
         'subtitle.forgot-password': 'Request a new one!',
+        'subtitle.reset-password': 'Choose a new one!',
 
         'validation.required': 'This field is required!',
         'validation.email': 'You must enter valid email address!',
+        'validation.password': 'Your password must be at least 8 characters long!',
 
         'form.input.placeholder.email': 'Email Adrress',
         'form.input.placeholder.password': 'Password',
+        'form.input.placeholder.new-password': 'Choose new password',
 
         'button.sign-in': 'Sign in',
         'button.forgot-password': 'Request new password',
@@ -29,5 +33,8 @@ export const en = {
         'message.sign-in-error': `Wrong credentials!`,
         'message.forgot-password-success': `New password has been successfully requested! Check the email you entered!`,
         'message.forgot-password-error': `Something went wrong! Please check the validity of your email!`,
+        'message.reset-password-form-error': `Email & Token pair does not exist!`,
+        'message.reset-password-success': `You have successfully changed your password!`,
+        'message.reset-password-error': `Email & token pair is not valid!`,
     }
 }

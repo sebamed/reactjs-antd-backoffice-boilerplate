@@ -10,7 +10,7 @@ import FormButton from '../../shared/form/button/form-button';
 import http from '../../../config/http';
 import { API_AUTH_SIGN_IN } from '../../../utils/consts/api';
 import history from '../../../config/history';
-import { ROUTE_AUTH_FORGOT_PASSWORD } from '../../../utils/consts/routing';
+import { ROUTE_AUTH_FORGOT_PASSWORD, ROUTE_AUTH_SIGN_IN } from '../../../utils/consts/routing';
 
 class SignIn extends React.Component {
 
@@ -31,10 +31,11 @@ class SignIn extends React.Component {
         http
             .post(`${API_AUTH_SIGN_IN}`, { email, password })
             .then(response => {
-                message.success(intl.formatMessage({ id: "message.sign-in-success" }))
+                message.success(intl.formatMessage({ id: "message.sign-in-success" }));
+                history.push(ROUTE_AUTH_SIGN_IN);
             })
             .catch(error => {
-                message.error(intl.formatMessage({ id: "message.sign-in-error" }))
+                message.error(intl.formatMessage({ id: "message.sign-in-error" }));
             })
             .finally(() => {
                 this.toggleLoading(false);

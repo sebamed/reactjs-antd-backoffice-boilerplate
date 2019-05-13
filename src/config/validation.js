@@ -18,6 +18,10 @@ export class ValidationConfig {
                 {
                     required: true,
                     message: <FormattedMessage id='validation.required' />
+                },
+                {
+                    min: 8,
+                    message: <FormattedMessage id='validation.password' />
                 }
             ]
         },
@@ -30,6 +34,18 @@ export class ValidationConfig {
                 {
                     type: 'email',
                     message: <FormattedMessage id='validation.email' />
+                }
+            ]
+        },
+        RESET_PASSWORD: {
+            password: [
+                {
+                    required: true,
+                    message: <FormattedMessage id='validation.required' />
+                },
+                {
+                    min: 8,
+                    message: <FormattedMessage id='validation.password' />
                 }
             ]
         }
