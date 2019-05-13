@@ -8,11 +8,11 @@ import ValidatedField from '../../shared/form/field/validated-field';
 import { ValidationConfig } from '../../../config/validation';
 import FormButton from '../../shared/form/button/form-button';
 import http from '../../../config/http';
-import { API_AUTH_SIGN_IN } from '../../../utils/consts/api';
+import {  API_AUTH_FORGOT_PASSWORD } from '../../../utils/consts/api';
 import history from '../../../config/history';
-import { ROUTE_AUTH_FORGOT_PASSWORD } from '../../../utils/consts/routing';
+import { ROUTE_AUTH_SIGN_IN } from '../../../utils/consts/routing';
 
-class SignIn extends React.Component {
+class ForgotPassword extends React.Component {
 
     constructor(props) {
         super(props);
@@ -29,12 +29,12 @@ class SignIn extends React.Component {
         this.toggleLoading(true);
 
         http
-            .post(`${API_AUTH_SIGN_IN}`, { email, password })
+            .post(`${API_AUTH_FORGOT_PASSWORD}`, { email, password })
             .then(response => {
-                message.success(intl.formatMessage({ id: "message.sign-in-success" }))
+                message.success(intl.formatMessage({ id: "message.forgot-password-success" }))
             })
             .catch(error => {
-                message.error(intl.formatMessage({ id: "message.sign-in-error" }))
+                message.error(intl.formatMessage({ id: "message.forgot-password-error" }))
             })
             .finally(() => {
                 this.toggleLoading(false);
@@ -52,12 +52,12 @@ class SignIn extends React.Component {
 
         return (
             <div>
-                <AuthTitle title={<FormattedMessage id='title.sign-in' />} subtitle={<FormattedMessage id='subtitle.sign-in' />} />
+                <AuthTitle title={<FormattedMessage id='title.forgot-password' />} subtitle={<FormattedMessage id='subtitle.forgot-password' />} />
                 <Form onSubmit={(e) => checkForm(e, this.props.form, this.handleSubmit)}>
                     <ValidatedField
                         name='email'
                         hasFeedback
-                        rules={ValidationConfig.Auth.SIGN_IN.email}
+                        rules={ValidationConfig.Auth.FORGOT_PASSWORD.email}
                         form={this.props.form}
                         Component={(
                             <Input
@@ -73,42 +73,21 @@ class SignIn extends React.Component {
                             />
                         )}
                     />
-                    <ValidatedField
-                        name='password'
-                        rules={ValidationConfig.Auth.SIGN_IN.password}
-                        form={this.props.form}
-                        Component={(
-                            <Input.Password
-                                password='true'
-                                id='password'
-                                type='password'
-                                size='large'
-                                name='password'
-                                placeholder={intl.formatMessage({ id: "form.input.placeholder.password" })}
-                                className="input-text with-border"
-                                autoComplete='password'
-                                addonBefore={
-                                    <Icon type="lock" />
-                                }
-                            />
-                        )}
-                    />
                     <FormButton
                         loading={this.state.loading}
-                        text={<FormattedMessage id='button.sign-in' />}
+                        text={<FormattedMessage id='button.forgot-password' />}
                         fullWidth
                         type='submit'
                     />
 
                 </Form>
-                <Divider><span className='divide-text'><FormattedMessage id='label.divide-sign-in' /></span></Divider>
+                <Divider><span className='divide-text'><FormattedMessage id='label.divide-forgot-password' /></span></Divider>
                 <div className="options">
-                    <Text onClick={() => history.push(ROUTE_AUTH_FORGOT_PASSWORD)} type="secondary"><FormattedMessage id='label.forgot-password-sign-in' /></Text>
-                    <Text type="secondary"><FormattedMessage id='label.create-sign-in' /></Text>
+                    <Text onClick={() => history.push(ROUTE_AUTH_SIGN_IN)}type="secondary"><FormattedMessage id='label.back-to-sign-in' /></Text>
                 </div>
             </div>
         )
     }
 }
 
-export default injectIntl(Form.create({ name: 'sign-in ' })(SignIn));
+export default injectIntl(Form.create({ name: 'sign-in ' })(ForgotPassword));

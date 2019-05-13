@@ -20,6 +20,18 @@ export class ValidationConfig {
                     message: <FormattedMessage id='validation.required' />
                 }
             ]
+        },
+        FORGOT_PASSWORD: {
+            email: [
+                {
+                    required: true,
+                    message: <FormattedMessage id='validation.required' />
+                },
+                {
+                    type: 'email',
+                    message: <FormattedMessage id='validation.email' />
+                }
+            ]
         }
     }
 }

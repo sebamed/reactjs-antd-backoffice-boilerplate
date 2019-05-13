@@ -5,6 +5,7 @@ import Home from './home/home';
 import '../style/_base.scss'
 import Auth from './auth/auth';
 import '../config/messages';
+import { ROUTE_AUTH } from '../utils/consts/routing';
 
 const App = props => {
 
@@ -13,7 +14,7 @@ const App = props => {
             <Switch>
                 <Route path="/users" render={() => <UsersContainer />} />
                 <Route path="/home" render={() => <Home />} />
-                <Route path="/auth" render={() => <Auth />} />
+                <Route path={ROUTE_AUTH} render={() => <Auth />} />
                 <Route path="/home" render={() => <Home />} />
                 <Redirect to="/home" />
             </Switch>
