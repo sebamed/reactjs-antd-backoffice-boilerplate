@@ -10,7 +10,7 @@ import ValidatedField from '../../shared/form/field/validated-field';
 import { ValidationConfig } from '../../../config/validation';
 import FormButton from '../../shared/form/button/form-button';
 import http from '../../../config/http';
-import { API_AUTH_FORGOT_PASSWORD } from '../../../utils/consts/api';
+import { API_AUTH_FORGOT_PASSWORD, API_AUTH_RESET_PASSWORD } from '../../../utils/consts/api';
 import history from '../../../config/history';
 import { ROUTE_AUTH_SIGN_IN } from '../../../utils/consts/routing';
 
@@ -65,15 +65,16 @@ class ResetPassword extends React.Component {
         this.toggleLoading(true);
 
         http
-            .post(`${API_AUTH_FORGOT_PASSWORD}?email=${email}&token=${token}`, { password })
+            .post(`${API_AUTH_RESET_PASSWORD}?email=${email}&token=${token}`, { password })
             .then(response => {
-                message.success(intl.formatMessage({ id: "message.reset-password-success" }))
+                message.success(intl.formatMessage({ id: "message.reset-password-success" }));
             })
             .catch(error => {
-                message.error(intl.formatMessage({ id: "message.reset-password-error" }))
+                message.error(intl.formatMessage({ id: "message.reset-password-error" }));
             })
             .finally(() => {
                 this.toggleLoading(false);
+                history.push(ROUTE_AUTH_SIGN_IN);
             })
     }
 
