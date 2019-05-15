@@ -5,9 +5,12 @@ import DashboardHeaderNavBar from './dashboard-header-nav-bar';
 const { Header } = Layout;
 
 const DashboardHeader = props => {
+    const { sidebarCollapsed, toggleSidebarOpen } = props;
+    console.log(props)
+
     return (
         <Header id='dashboard-header'>
-            <DashboardHeaderNavBar />
+            <DashboardHeaderNavBar {...props} />
         </Header>
     )
 }
