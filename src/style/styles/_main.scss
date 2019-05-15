@@ -4,13 +4,29 @@ b {
 
 #dashboard-sider {
 
-    .logo {
-        height: 32px;
-        background: rgba(255, 255, 255, 0.2);
-        margin: 16px;
-      }
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+    position: relative;
+    z-index: 3;
 
-} 
+    .logo {
+        position: relative;
+        overflow: hidden;
+        background: #10487c;
+        transition: all 0.3s;
+        height: 64px;
+        margin: 0 5px;
+        box-shadow: 1px 1px 0 0 rgba(0, 21, 41, 0.35);
+    }
+
+}
+
+#dashboard-header {
+    position: relative;
+    padding: 0;
+    height: 64px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08); // TODO OVO GLEDI
+}
 
 #auth-container {
     background-image: url('https://wallpaperaccess.com/full/686998.jpg');
