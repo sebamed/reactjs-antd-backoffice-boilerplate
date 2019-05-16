@@ -32,7 +32,7 @@ const DashboardSiderMenu = props => {
     }
 
     return (
-        <Menu theme="dark" defaultSelectedKeys={SIDEBAR_MENU[0].id} mode="inline">
+        <Menu theme="dark" defaultSelectedKeys={[SIDEBAR_MENU[0].id]} mode="inline">
             {renderMenu()}
         </Menu>
     )

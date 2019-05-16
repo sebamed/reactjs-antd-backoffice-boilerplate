@@ -18,10 +18,35 @@ b {
         box-shadow: 1px 1px 0 0 rgba(0, 21, 41, 0.35);
     }
 
+
+}
+
+#dashboard-content {
+
+    .page-title {
+        box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+        background-color: rgba(255, 255, 255, 0.77);
+        position: relative;
+        z-index: 1;
+    }
+
+    .card-container {
+
+        height: calc(100vh - 122px);
+        padding: 20px;
+        overflow-y: scroll;
+        
+        .card-content {
+            height: auto;
+        }
+
+
+    }
 }
 
 #dashboard-header {
     position: relative;
+    z-index: 2;
     padding: 0;
     height: 64px;
     background-color: #fff;

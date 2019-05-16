@@ -1,14 +1,14 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { ROUTE_DASHBOARD } from "../../utils/consts/routing";
+import { ROUTE_DASHBOARD, ROUTE_DASHBOARD_ENTITY_LIST } from "../../utils/consts/routing";
 
 export const SIDEBAR_MENU = [
     {
         id: 'entity',
         icon: 'radar-chart',
         text: <FormattedMessage id='menu.sidebar.entity' />,
-        url: ROUTE_DASHBOARD
+        url: ROUTE_DASHBOARD_ENTITY_LIST
     },
     {
         id: 'exceptions',
