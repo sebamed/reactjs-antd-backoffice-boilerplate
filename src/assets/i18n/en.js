@@ -13,6 +13,15 @@ export const en = {
         'menu.header.lang.english':'English',
         'menu.header.lang.serbian':'Srpski',
 
+        'table.column.entity.name': 'Name',
+        'table.column.entity.surname': 'Surname',
+        'table.column.entity.email': 'Email Address',
+        'table.column.entity.city': 'City',
+        'table.column.entity.postcode': 'Postal Code',
+        'table.column.entity.street': 'Street',
+        'table.column.entity.title': 'Title',
+        'table.column.actions': 'Actions',
+
 
         'title.sign-in': 'Sign in here!',
         'title.forgot-password': 'Forgot Your password?',

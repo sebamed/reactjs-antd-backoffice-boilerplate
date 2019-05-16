@@ -1,45 +1,45 @@
 import React from 'react';
-import { Tag, Button, Tooltip } from "antd";
+import { Tag } from "antd";
+import { FormattedMessage } from 'react-intl';
 import { doOnFilter, doSort } from "../utils/helper/table-helper";
-import ButtonGroup from 'antd/lib/button/button-group';
 import TableEditDeleteRestoreActions from '../components/shared/table/columns/edit-delete-restore';
 
 export class TableConfig {
     static ENTITY = (handleEdit, handleDelete, handleRestore) => {
         return [
             {
-                title: 'Name',
+                title: <FormattedMessage id='table.column.entity.name' />,
                 dataIndex: 'name.first',
                 key: 'name',
                 sorter: (a, b) => doSort(a.name.title, b.name.title),
             },
             {
-                title: 'Surname',
+                title: <FormattedMessage id='table.column.entity.surname' />,
                 dataIndex: 'name.last',
                 key: 'surname'
             },
             {
-                title: 'Email',
+                title: <FormattedMessage id='table.column.entity.email' />,
                 dataIndex: 'email',
                 key: 'email'
             },
             {
-                title: 'City',
+                title: <FormattedMessage id='table.column.entity.city' />,
                 dataIndex: 'location.city',
                 key: 'city'
             },
             {
-                title: 'Post code',
+                title: <FormattedMessage id='table.column.entity.postcode' />,
                 dataIndex: 'location.postcode',
                 key: 'postcode'
             },
             {
-                title: 'Street',
+                title: <FormattedMessage id='table.column.entity.street' />,
                 dataIndex: 'location.street',
                 key: 'street'
             },
             {
-                title: 'Title',
+                title: <FormattedMessage id='table.column.entity.title' />,
                 dataIndex: 'name.title',
                 filters: [{ text: 'Male', value: 'mr' }, { text: 'Female', value: 'miss' }, , { text: 'Young Female', value: 'ms' }],
                 onFilter: (value, record) => doOnFilter(record.name.title, value),

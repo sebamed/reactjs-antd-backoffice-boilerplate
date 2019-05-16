@@ -41,6 +41,7 @@ class EntityList extends React.Component {
                 columns={TableConfig.ENTITY((record) => this.handleDelete(record),(record) => this.handleDelete(record),(record) => this.handleDelete(record))}
                 dataSource={this.state.entities}
                 bordered
+                size='middle'
                 loading={this.state.loading}
                 rowKey={record => record.login.uuid}
             />
