@@ -1,48 +1,39 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
+import { SIDEBAR_MENU } from '../../../config/menus/sidebar-config';
+import history from '../../../config/history';
 
-const { SubMenu } = Menu;
+const { SubMenu, Item } = Menu;
 
 const DashboardSiderMenu = props => {
+
+    const renderMenu = () => {
+        return SIDEBAR_MENU.map(item => {
+            if (item.children) {
+                return (
+                    <SubMenu
+                        key={item.id}
+                        title={
+                            <span>
+                                <Icon type={item.icon} />
+                                <span>{item.text}</span>
+                            </span>
+                        }
+                    >
+                        {item.children.map(child => {
+                           return <Item onClick={() => history.push(child.url)} key={child.id}>{child.icon ? <Icon type={child.icon} /> : null}{child.text}</Item>
+                        })}
+                    </SubMenu>
+                )
+            } else {
+                return <Item onClick={() => history.push(item.url)} key={item.id}>{item.icon ? <Icon type={item.icon} /> : null}{item.text}</Item>
+            }
+        })
+    }
+
     return (
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-                <Icon type="pie-chart" />
-                <span>Option 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-                <Icon type="desktop" />
-                <span>Option 2</span>
-            </Menu.Item>
-            <SubMenu
-                key="sub1"
-                title={
-                    <span>
-                        <Icon type="user" />
-                        <span>User</span>
-                    </span>
-                }
-            >
-                <Menu.Item key="3">Tom</Menu.Item>
-                <Menu.Item key="4">Bill</Menu.Item>
-                <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu
-                key="sub2"
-                title={
-                    <span>
-                        <Icon type="team" />
-                        <span>Team</span>
-                    </span>
-                }
-            >
-                <Menu.Item key="6">Team 1</Menu.Item>
-                <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9">
-                <Icon type="file" />
-                <span>File</span>
-            </Menu.Item>
+        <Menu theme="dark" defaultSelectedKeys={SIDEBAR_MENU[0].id} mode="inline">
+            {renderMenu()}
         </Menu>
     )
 }

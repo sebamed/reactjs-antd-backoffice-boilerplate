@@ -4,6 +4,16 @@ export const en = {
         'home.welcome.title': 'Welcome',
         'home.welcome.text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 
+        'menu.sidebar.entity':'Entity',
+        'menu.sidebar.exceptions':'Exceptions',
+        'menu.sidebar.exceptions-404':'404 - Not Found',
+
+        'menu.header.user.settings':'Account Settings',
+        'menu.header.user.logout':'Logout',
+        'menu.header.lang.english':'English',
+        'menu.header.lang.serbian':'Srpski',
+
+
         'title.sign-in': 'Sign in here!',
         'title.forgot-password': 'Forgot Your password?',
         'title.reset-password': 'Reset Your password!',

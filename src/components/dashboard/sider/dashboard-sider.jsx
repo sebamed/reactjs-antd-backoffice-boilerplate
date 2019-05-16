@@ -5,12 +5,12 @@ import DashboardCollapsibleSider from './dashboard-collapsible-sider';
 
 const DashboardSider = props => {
 
-    const { sidebarCollapsed, toggleSidebar } = props;
+    const { sidebarCollapsed, toggleSidebarOpen } = props;
 
     return (
         <Media query="(max-width: 599px)">
             {isMobile =>
-                <DashboardCollapsibleSider onCollapse={(e) => toggleSidebar(e)} collapsed={sidebarCollapsed} isMobile={isMobile} />
+                <DashboardCollapsibleSider onCollapse={(e) => toggleSidebarOpen(e)} collapsed={sidebarCollapsed} isMobile={isMobile} />
             }
         </Media>
     )
