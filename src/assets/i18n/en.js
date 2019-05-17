@@ -22,6 +22,16 @@ export const en = {
         'table.column.entity.title': 'Title',
         'table.column.actions': 'Actions',
 
+        'popconfirm.button.ok': 'Yes',
+        'popconfirm.button.cancel': 'Cancel',
+
+        'popconfirm.entity.delete': 'Are You sure You want to delete this entity?',
+        'popconfirm.entity.restore': 'Are You sure You want to restore this entity?',
+
+        'page-title.entity.title' : 'Entity',
+        'page-title.entity.subtitle' : 'Browse and manage records of Entity',
+
+        'header-actions.entity.create-new.tooltip': 'Create new entity',
 
         'title.sign-in': 'Sign in here!',
         'title.forgot-password': 'Forgot Your password?',

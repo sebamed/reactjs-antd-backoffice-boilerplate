@@ -1,6 +1,7 @@
 import React from 'react';
 import ButtonGroup from 'antd/lib/button/button-group';
-import { Tooltip, Button, Popconfirm } from 'antd';
+import { FormattedMessage } from 'react-intl';
+import { Button, Popconfirm } from 'antd';
 
 const TableEditDeleteRestoreActions = props => {
 
@@ -11,12 +12,12 @@ const TableEditDeleteRestoreActions = props => {
             {condition.toString() == equalsTo ?
                 <React.Fragment>
                     <Button type="primary" icon="edit" />
-                    <Popconfirm okText='Yes' title="Are You sure You want to delete?" onConfirm={handleEdit}>
+                    <Popconfirm placement='topLeft' okText={<FormattedMessage id='popconfirm.button.ok' />} cancelText={<FormattedMessage id='popconfirm.button.cancel' />} title={<FormattedMessage id='popconfirm.entity.delete' />} onConfirm={handleEdit}>
                         <Button onClick={handleDelete} type="primary" icon="delete" />
                     </Popconfirm>
                 </React.Fragment>
                 :
-                <Popconfirm title="Are You sure You want to restore?" onConfirm={handleRestore}>
+                <Popconfirm placement='topLeft' okText={<FormattedMessage id='popconfirm.button.ok' />} cancelText={<FormattedMessage id='popconfirm.button.cancel' />} title={<FormattedMessage id='popconfirm.entity.delete' />} onConfirm={handleRestore}>
                     <Button type="primary" icon="undo" />
                 </Popconfirm>
             }
