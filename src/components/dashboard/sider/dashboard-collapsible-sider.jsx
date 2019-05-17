@@ -9,10 +9,10 @@ const DashboardCollapsibleSider = props => {
     const { isMobile, collapsed, onCollapse } = props;
 
     return (
-        <Sider trigger={null} id='dashboard-sider' width={250} collapsible collapsed={collapsed} onCollapse={onCollapse} collapsedWidth={isMobile ? '0' : '80px'} breakpoint="md"
+        <Sider trigger={null} id='dashboard-sider' width={256} collapsible collapsed={collapsed} onCollapse={onCollapse} collapsedWidth={isMobile ? '0' : '80px'} breakpoint="md"
         >
             <DashboardSiderLogo isMobile={isMobile} />
-            <DashboardSiderMenu />
+            <DashboardSiderMenu className='sider-menu' />
         </Sider>
     )
 };

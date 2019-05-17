@@ -8,13 +8,19 @@ b {
     background-color: #fff !important;
 }
 
+.ant-drawer-body {
+    padding: 0;
+}
+
 #dashboard-sider {
 
     box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
     position: relative;
     z-index: 3;
 
-    
+    .sider-menu {
+        display: none;
+    }
 
     .logo {
         position: relative;
@@ -42,7 +48,7 @@ b {
 
         height: calc(100vh - 122px);
         padding: 20px;
-        overflow-y: scroll;
+        overflow-y: auto;
         
         .card-ontent {
             height: auto;
