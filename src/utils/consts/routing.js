@@ -7,3 +7,4 @@ export const ROUTE_DASHBOARD = '/dashboard';
 
 export const ROUTE_DASHBOARD_ENTITY = `${ROUTE_DASHBOARD}/entity`;
 export const ROUTE_DASHBOARD_ENTITY_LIST = `${ROUTE_DASHBOARD_ENTITY}`;
+export const ROUTE_DASHBOARD_ENTITY_CREATE_NEW = `${ROUTE_DASHBOARD_ENTITY}/create-new`;
