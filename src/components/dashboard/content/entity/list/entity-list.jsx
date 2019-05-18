@@ -20,11 +20,11 @@ class EntityList extends React.Component {
         http
             .get('https://randomuser.me/api/?results=100')
             .then(response => {
-                this.setState({entities: response.data.results});
+                this.setState({ entities: response.data.results });
                 console.log(response.data.results)
             })
             .finally(() => {
-                this.setState({loading: false})
+                this.setState({ loading: false })
             })
     }
 
@@ -32,16 +32,15 @@ class EntityList extends React.Component {
         console.log(record)
     }
 
- 
+
 
     render() {
-        
+
         return (
             <Table
-                columns={TableConfig.ENTITY((record) => this.handleDelete(record),(record) => this.handleDelete(record),(record) => this.handleDelete(record))}
+                columns={TableConfig.ENTITY((record) => this.handleDelete(record), (record) => this.handleDelete(record), (record) => this.handleDelete(record))}
                 dataSource={this.state.entities}
                 bordered
-                size='middle'
                 loading={this.state.loading}
                 rowKey={record => record.login.uuid}
             />

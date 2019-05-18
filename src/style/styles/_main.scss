@@ -14,12 +14,14 @@ b {
 
 #dashboard-sider {
 
-    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.1);
     position: relative;
     z-index: 3;
 
-    .sider-menu {
-        display: none;
+    .menu-item {
+        margin: 0;
+       height: 58px;
+       line-height: 58px;
     }
 
     .logo {

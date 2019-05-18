@@ -26,7 +26,7 @@ const DashboardSiderMenu = props => {
                     </SubMenu>
                 )
             } else {
-                return <Item onClick={() => history.push(item.url)} key={item.id}>{item.icon ? <Icon type={item.icon} /> : null}{item.text}</Item>
+                return <Item className='menu-item' onClick={() => history.push(item.url)} key={item.id}>{item.icon ? <Icon type={item.icon} /> : null}{item.text}</Item>
             }
         })
     }
