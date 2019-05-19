@@ -5,15 +5,17 @@ import { Button, Tooltip } from 'antd';
 const PageTitleActions = props => {
     const { actions } = props;
     return (
-        <ButtonGroup>
-            {actions.map(action => {
-                return (
-                    <Tooltip key={action.id} title={action.tooltip} placement='bottomLeft'>
-                        <Button className={action.class} type={action.type} onClick={() => action.onClick()} icon={action.icon}>{action.text}</Button>
-                    </Tooltip>
-                )
-            })}
-        </ButtonGroup>
+        <div className="buttons">
+            <ButtonGroup>
+                {actions.map(action => {
+                    return (
+                        <Tooltip key={action.id} title={action.tooltip} placement='bottomLeft'>
+                            <Button className={action.class} type={action.type} onClick={() => action.onClick()} icon={action.icon}>{action.text}</Button>
+                        </Tooltip>
+                    )
+                })}
+            </ButtonGroup>
+        </div>
     )
 }
 
