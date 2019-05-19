@@ -5,6 +5,7 @@ import { doOnFilter, doSort } from '../../../../../utils/helper/table-helper';
 import { TableConfig } from '../../../../../config/tables';
 import PageTitleActions from '../../../../shared/title/page-title-actions';
 import { HeaderActions } from '../../../../../config/header-actions';
+import TableSearchActions from '../../../../shared/table/table-search-actions';
 
 class EntityList extends React.Component {
 
@@ -13,7 +14,7 @@ class EntityList extends React.Component {
         super(props);
 
         this.state = {
-            entities: [],
+            entities: undefined,
             loading: true
         }
     }
@@ -23,7 +24,6 @@ class EntityList extends React.Component {
             .get('https://randomuser.me/api/?results=100')
             .then(response => {
                 this.setState({ entities: response.data.results });
-                console.log(response.data.results)
             })
             .finally(() => {
                 this.setState({ loading: false })
@@ -34,25 +34,27 @@ class EntityList extends React.Component {
         console.log(record)
     }
 
+    handleRestore(record) {
+        console.log(record)
+    }
 
+    handleEdit(record) {
+        console.log(record)
+    }
 
     render() {
 
         return (
             <div>
-                <div className="table-actions">
-                    <PageTitleActions key='page_title_extra_1' actions={[
+                <TableSearchActions
+                    columns={
+                        TableConfig.ENTITY((record) => this.handleDelete(record), (record) => this.handleRestore(record), (record) => this.handleEdit(record))
+                    }
+                    actions={[
                         HeaderActions.ENTITY.createNew(() => { console.log('kliks') })
-
-                    ]} />
-                    <div className='clear-fix'></div>
-                </div>
-                <Table
-                    columns={TableConfig.ENTITY((record) => this.handleDelete(record), (record) => this.handleDelete(record), (record) => this.handleDelete(record))}
-                    dataSource={this.state.entities}
-                    bordered
-                    loading={this.state.loading}
-                    rowKey={record => record.login.uuid}
+                    ]}
+                    data={this.state.entities}
+                    bordered={true}
                 />
             </div>
         )
