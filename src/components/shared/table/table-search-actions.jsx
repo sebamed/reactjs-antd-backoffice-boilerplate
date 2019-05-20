@@ -10,6 +10,7 @@ const TableSearchActions = props => {
     return (
         <div>
             <div className="table-actions">
+                
                 <PageTitleActions key='page_title_extra_1' actions={actions} />
                 <div className='clear-fix'></div>
             </div>

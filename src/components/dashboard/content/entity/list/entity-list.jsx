@@ -6,6 +6,8 @@ import { TableConfig } from '../../../../../config/tables';
 import PageTitleActions from '../../../../shared/title/page-title-actions';
 import { HeaderActions } from '../../../../../config/header-actions';
 import TableSearchActions from '../../../../shared/table/table-search-actions';
+import history from '../../../../../config/history';
+import { ROUTE_DASHBOARD_ENTITY_CREATE_NEW } from '../../../../../utils/consts/routing';
 
 class EntityList extends React.Component {
 
@@ -43,7 +45,6 @@ class EntityList extends React.Component {
     }
 
     render() {
-
         return (
             <div>
                 <TableSearchActions
@@ -51,7 +52,7 @@ class EntityList extends React.Component {
                         TableConfig.ENTITY((record) => this.handleDelete(record), (record) => this.handleRestore(record), (record) => this.handleEdit(record))
                     }
                     actions={[
-                        HeaderActions.ENTITY.createNew(() => { console.log('kliks') })
+                        HeaderActions.ENTITY.createNew(() => { history.push(ROUTE_DASHBOARD_ENTITY_CREATE_NEW) })
                     ]}
                     data={this.state.entities}
                     bordered={true}

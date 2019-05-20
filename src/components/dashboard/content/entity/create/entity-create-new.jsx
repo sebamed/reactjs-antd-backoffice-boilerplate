@@ -1,13 +1,154 @@
 import React from 'react';
+import { Form, Input, Icon, Select, Radio, Checkbox, Button } from 'antd';
+import { injectIntl, FormattedMessage } from 'react-intl';
+import { checkForm } from '../../../../../utils/helper/form-helper';
+import ValidatedField from '../../../../shared/form/field/validated-field';
+import { ValidationConfig } from '../../../../../config/validation';
+import FormTitle from '../../../../shared/form/title/form-title';
+import FormButton from '../../../../shared/form/button/form-button';
+import http from '../../../../../config/http';
+import RadioGroup from 'antd/lib/radio/group';
+import TextArea from 'antd/lib/input/TextArea';
+import CancelButton from '../../../../shared/form/button/back-button';
+import history from '../../../../../config/history';
+import { ROUTE_DASHBOARD_ENTITY_LIST } from '../../../../../utils/consts/routing';
 
 class EntityCreateNew extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loading: false,
+            users: []
+        }
+    }
+
+    componentDidMount() {
+        http
+            .get('https://randomuser.me/api/?results=4')
+            .then(response => {
+                this.setState({ users: response.data.results });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    handleSubmit = values => {
+        const body = {
+            email: values.email,
+            user: JSON.parse(values.selectUser),
+            letter: JSON.parse(values.selectLetter),
+            description: values.description,
+            agreement: values.agreement
+        }
+
+        http
+            .post('http://', body)
+            .then(response => {
+                history.push(ROUTE_DASHBOARD_ENTITY_LIST)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     render() {
-        return(
+        const { intl } = this.props;
+        const { users } = this.state;
+        const { Option } = Select;
+
+        return (
             <div>
-                create new
+                <Form onSubmit={(e) => checkForm(e, this.props.form, this.handleSubmit)}>
+                    <div className="row justify-content-center">
+                        <div className="col-md-5">
+                            <FormTitle title='Create new entity' />
+                            <ValidatedField
+                                name='email'
+                                hasFeedback
+                                rules={ValidationConfig.Entity.CREATE.email}
+                                form={this.props.form}
+                                Component={(
+                                    <Input
+                                        id='email'
+                                        type='email'
+                                        name='email'
+                                        placeholder={intl.formatMessage({ id: "form.input.placeholder.email" })}
+                                        autoComplete='email'
+                                        addonBefore={
+                                            <Icon type="mail" />
+                                        }
+                                    />
+                                )}
+                            />
+                            <ValidatedField
+                                name='selectUser'
+                                hasFeedback
+                                rules={ValidationConfig.Entity.CREATE.selectUser}
+                                form={this.props.form}
+
+                                Component={(
+                                    <Select className='full-width' placeholder={intl.formatMessage({ id: "form.input.placeholder.email" })} style={{ width: 120 }}>
+                                        {users.map(user => {
+                                            return (
+                                                <Option key={'option_' + user.login.uuid} value={JSON.stringify(user)}>{user.name.first} {user.name.last}</Option>
+                                            )
+                                        })}
+                                    </Select>
+                                )}
+                            />
+                            <ValidatedField
+                                name='selectLetter'
+                                hasFeedback
+                                rules={ValidationConfig.Entity.CREATE.selectLetter}
+                                form={this.props.form}
+                                value={JSON.stringify(users[0])}
+                                Component={(
+                                    <RadioGroup className='form-radio-group full-width'>
+                                        {users.map(user => {
+                                            return (
+                                                <Radio className='form-radio' key={'radio_' + user.login.uuid} value={JSON.stringify(user)}>{user.email}</Radio>
+                                            )
+                                        })}
+                                    </RadioGroup>
+                                )}
+                            />
+                            <ValidatedField
+                                name='description'
+                                hasFeedback
+                                rules={ValidationConfig.Entity.CREATE.description}
+                                form={this.props.form}
+                                Component={(
+                                    <TextArea placeholder={intl.formatMessage({ id: "form.input.placeholder.email" })} maxLength={100} rows={4} />
+                                )}
+                            />
+                            <ValidatedField
+                                name='cbAgreement'
+                                rules={[]}
+                                form={this.props.form}
+                                value={false}
+                                Component={(
+                                    <Checkbox className='full-width'>
+                                        I have read the agreement
+                                    </Checkbox>
+                                )}
+                            />
+                            <p className='form-info'><FormattedMessage id='label.form-required' /></p>
+                            <FormButton
+                                loading={this.state.loading}
+                                text={<FormattedMessage id='button.sign-in' />}
+                                fullWidth
+                                type='submit'
+                            />
+                            <CancelButton />
+                        </div>
+                    </div>
+                </Form>
             </div>
         )
     }
 }
 
-export default EntityCreateNew;
+export default injectIntl(Form.create({ name: 'create-entity' })(EntityCreateNew));

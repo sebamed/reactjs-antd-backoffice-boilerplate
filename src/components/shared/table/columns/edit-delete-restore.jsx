@@ -13,12 +13,12 @@ const TableEditDeleteRestoreActions = props => {
                 <React.Fragment>
                     <Button type="primary" icon="edit" />
                     <Popconfirm placement='topLeft' okText={<FormattedMessage id='popconfirm.button.ok' />} cancelText={<FormattedMessage id='popconfirm.button.cancel' />} title={<FormattedMessage id='popconfirm.entity.delete' />} onConfirm={handleEdit}>
-                        <Button onClick={handleDelete} type="primary" icon="delete" />
+                        <Button onClick={handleDelete} type="danger" icon="delete" />
                     </Popconfirm>
                 </React.Fragment>
                 :
                 <Popconfirm placement='topLeft' okText={<FormattedMessage id='popconfirm.button.ok' />} cancelText={<FormattedMessage id='popconfirm.button.cancel' />} title={<FormattedMessage id='popconfirm.entity.delete' />} onConfirm={handleRestore}>
-                    <Button type="primary" icon="undo" />
+                    <Button type="ghost" icon="undo" />
                 </Popconfirm>
             }
 

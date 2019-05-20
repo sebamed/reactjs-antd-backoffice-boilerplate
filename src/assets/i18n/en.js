@@ -51,12 +51,14 @@ export const en = {
 
         'button.sign-in': 'Sign in',
         'button.forgot-password': 'Request new password',
+        'button.cancel': 'Cancel',
 
         'label.divide-sign-in': 'Unable to sign in?',
         'label.divide-forgot-password': 'Made a mistake?',
         'label.forgot-password-sign-in': 'Forgot Your password? Request a new one!',
         'label.create-sign-in': `Don't have an account yet? Create one now!`,
         'label.back-to-sign-in': 'Back to sign in!',
+        'label.form-required': 'Fields with * are required!',
 
         'message.sign-in-success': `Sign in successful!`,
         'message.sign-in-error': `Wrong credentials!`,

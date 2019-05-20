@@ -68,6 +68,15 @@ b {
             }
         }
 
+        .form-title {
+            text-align: center;
+            margin: 20px;
+
+            h1 {
+                font-size: 24px;
+                font-weight: 500;
+            }
+        }
 
     }
 }
@@ -206,10 +215,50 @@ b {
 }
 
 .full-width {
-    width: 100%;
+    width: 100% !important;
 }
 
 .button {
     padding: 10px;
     height: auto;
+}
+
+.form-info {
+    color: #bdbdbd;
+    font-size: 12px;
+}
+
+.form-radio-group {
+
+    .form-radio {
+        background-color:#f0f2f5;
+        padding: 5px;
+        border-radius: 5px;
+        width: 100%;
+        
+        &:hover {
+            background-color: #ececec;
+        }
+        
+        &:last-child {
+            width: calc(100% - 35px);
+        }
+    }
+    
+    .ant-radio-wrapper-checked {
+        background-color: #09b0fd !important;
+        color: #fff;
+    }
+}
+
+.required-form-item {
+
+    &::before {
+        content: '*';
+        position: absolute;
+        left: -15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: red;
+    }
 }

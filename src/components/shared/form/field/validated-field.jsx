@@ -7,7 +7,7 @@ const ValidatedField = props => {
     const { getFieldDecorator } = form;
 
     return (
-        <Form.Item hasFeedback={hasFeedback ? true : false} label={label ? label : ''}>
+        <Form.Item className={rules.length > 0 ? 'required-form-item' : ''} hasFeedback={hasFeedback ? true : false} label={label ? label : ''}>
             {getFieldDecorator(name, {
                 rules: rules,
                 initialValue: value
