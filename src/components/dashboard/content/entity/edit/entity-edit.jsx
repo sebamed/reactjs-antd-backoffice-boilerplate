@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input, Icon, Select, Radio, Checkbox, Button } from 'antd';
+import { withRouter } from 'react-router-dom';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { checkForm } from '../../../../../utils/helper/form-helper';
 import ValidatedField from '../../../../shared/form/field/validated-field';
@@ -13,39 +14,41 @@ import CancelButton from '../../../../shared/form/button/back-button';
 import history from '../../../../../config/history';
 import { ROUTE_DASHBOARD_ENTITY_LIST } from '../../../../../utils/consts/routing';
 
-class EntityCreateNew extends React.Component {
+class EntityEdit extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             loading: false,
-            users: []
+            user: {}
         }
     }
 
     componentDidMount() {
+        const { id } = this.props.match.params;
+
         http
-            .get('https://randomuser.me/api/?results=4')
+            .get('https://randomuser.me/api/')
             .then(response => {
-                this.setState({ users: response.data.results });
+                this.setState({user: response.data.results[0]})
             })
             .catch(error => {
-                console.log(error)
+                if(error.response.data.status === 404) {
+                    // throw 404 page
+                }
             })
     }
 
     handleSubmit = values => {
         const body = {
             email: values.email,
-            user: JSON.parse(values.selectUser),
-            letter: JSON.parse(values.selectLetter),
             description: values.description,
             agreement: values.agreement
         }
 
         http
-            .post('http://', body)
+            .put('http://', body)
             .then(response => {
                 history.push(ROUTE_DASHBOARD_ENTITY_LIST)
             })
@@ -56,18 +59,18 @@ class EntityCreateNew extends React.Component {
 
     render() {
         const { intl } = this.props;
-        const { users } = this.state;
-        const { Option } = Select;
+        const { user } = this.state;
 
         return (
             <div>
                 <Form onSubmit={(e) => checkForm(e, this.props.form, this.handleSubmit)}>
                     <div className="row justify-content-center">
                         <div className="col-md-5">
-                            <FormTitle title='Create new entity' />
+                            <FormTitle title='Edit entity' />
                             <ValidatedField
                                 name='email'
                                 hasFeedback
+                                value={user.email}
                                 rules={ValidationConfig.Entity.CREATE.email}
                                 form={this.props.form}
                                 Component={(
@@ -82,39 +85,7 @@ class EntityCreateNew extends React.Component {
                                         }
                                     />
                                 )}
-                            />
-                            <ValidatedField
-                                name='selectUser'
-                                hasFeedback
-                                rules={ValidationConfig.Entity.CREATE.selectUser}
-                                form={this.props.form}
-
-                                Component={(
-                                    <Select className='full-width' placeholder={intl.formatMessage({ id: "form.input.placeholder.email" })} style={{ width: 120 }}>
-                                        {users.map(user => {
-                                            return (
-                                                <Option key={'option_' + user.login.uuid} value={JSON.stringify(user)}>{user.name.first} {user.name.last}</Option>
-                                            )
-                                        })}
-                                    </Select>
-                                )}
-                            />
-                            <ValidatedField
-                                name='selectLetter'
-                                hasFeedback
-                                rules={ValidationConfig.Entity.CREATE.selectLetter}
-                                form={this.props.form}
-                                value={JSON.stringify(users[0])}
-                                Component={(
-                                    <RadioGroup className='form-radio-group full-width'>
-                                        {users.map(user => {
-                                            return (
-                                                <Radio className='form-radio' key={'radio_' + user.login.uuid} value={JSON.stringify(user)}>{user.email}</Radio>
-                                            )
-                                        })}
-                                    </RadioGroup>
-                                )}
-                            />
+                            />                            
                             <ValidatedField
                                 name='description'
                                 hasFeedback
@@ -151,4 +122,4 @@ class EntityCreateNew extends React.Component {
     }
 }
 
-export default injectIntl(Form.create({ name: 'create-entity' })(EntityCreateNew));
+export default withRouter(injectIntl(Form.create({ name: 'create-entity' })(EntityEdit)));
