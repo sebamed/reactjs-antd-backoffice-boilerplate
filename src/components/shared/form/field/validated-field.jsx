@@ -3,7 +3,7 @@ import { Form } from 'antd';
 
 const ValidatedField = props => {
 
-    const { name, label, rules, Component, form, hasFeedback, value } = props;
+    const { name, label, rules = [], Component, form, hasFeedback, value } = props;
     const { getFieldDecorator } = form;
 
     return (

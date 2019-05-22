@@ -10,7 +10,10 @@ import FormButton from '../../shared/form/button/form-button';
 import http from '../../../config/http';
 import { API_AUTH_SIGN_IN } from '../../../utils/consts/api';
 import history from '../../../config/history';
+import * as actions from '../../../store/actions';
 import { ROUTE_AUTH_FORGOT_PASSWORD, ROUTE_AUTH_SIGN_IN } from '../../../utils/consts/routing';
+import store from '../../../store/store';
+import { insertSignIn } from '../../../utils/helper/local-storage';
 
 class SignIn extends React.Component {
 
@@ -31,7 +34,11 @@ class SignIn extends React.Component {
         http
             .post(`${API_AUTH_SIGN_IN}`, { email, password })
             .then(response => {
+                const { user, token } = response.data;
+                console.log(response)
                 message.success(intl.formatMessage({ id: "message.sign-in-success" }));
+                insertSignIn(user, token);
+                store.dispatch(actions.signIn(user, token));
                 history.push(ROUTE_AUTH_SIGN_IN);
             })
             .catch(error => {
@@ -76,7 +83,7 @@ class SignIn extends React.Component {
                     />
                     <ValidatedField
                         name='password'
-                        rules={ValidationConfig.Auth.SIGN_IN.password}
+                        // rules={ValidationConfig.Auth.SIGN_IN.password}
                         form={this.props.form}
                         Component={(
                             <Input.Password

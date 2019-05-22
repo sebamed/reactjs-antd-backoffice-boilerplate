@@ -60,6 +60,7 @@ export const en = {
         'label.back-to-sign-in': 'Back to sign in!',
         'label.form-required': 'Fields with * are required!',
 
+        'message.auth-error': `You must be logged in!`,
         'message.sign-in-success': `Sign in successful!`,
         'message.sign-in-error': `Wrong credentials!`,
         'message.forgot-password-success': `New password has been successfully requested! Check the email you entered!`,
