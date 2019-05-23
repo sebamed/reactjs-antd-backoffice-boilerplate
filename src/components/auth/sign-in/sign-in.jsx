@@ -11,7 +11,7 @@ import http from '../../../config/http';
 import { API_AUTH_SIGN_IN } from '../../../utils/consts/api';
 import history from '../../../config/history';
 import * as actions from '../../../store/actions';
-import { ROUTE_AUTH_FORGOT_PASSWORD, ROUTE_AUTH_SIGN_IN } from '../../../utils/consts/routing';
+import { ROUTE_AUTH_FORGOT_PASSWORD, ROUTE_DASHBOARD } from '../../../utils/consts/routing';
 import store from '../../../store/store';
 import { insertSignIn } from '../../../utils/helper/local-storage';
 
@@ -39,7 +39,7 @@ class SignIn extends React.Component {
                 message.success(intl.formatMessage({ id: "message.sign-in-success" }));
                 insertSignIn(user, token);
                 store.dispatch(actions.signIn(user, token));
-                history.push(ROUTE_AUTH_SIGN_IN);
+                history.push(ROUTE_DASHBOARD);
             })
             .catch(error => {
                 message.error(intl.formatMessage({ id: "message.sign-in-error" }));

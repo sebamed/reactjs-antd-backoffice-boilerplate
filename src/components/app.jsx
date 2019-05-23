@@ -40,14 +40,15 @@ class App extends React.Component {
     }
 
     render() {
+        const { auth } = this.props;
 
         return (
             <div>
                 <Switch>
                     <Route path="/users" render={() => <UsersContainer />} />
                     <Route path="/home" render={() => <Home />} />
-                    <Route path={ROUTE_AUTH} render={() => <Auth />} />
-                    <Route path={ROUTE_DASHBOARD} render={() => <Dashboard />} />
+                    <Route path={ROUTE_AUTH} render={() => <Auth auth={auth} />} />
+                    <Route path={ROUTE_DASHBOARD} render={() => <Dashboard auth={auth} />} />
                     <Route path="/home" render={() => <Home />} />
                     <Redirect to="/home" />
                 </Switch>

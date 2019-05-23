@@ -68,5 +68,6 @@ export const en = {
         'message.reset-password-form-error': `Email & Token pair does not exist!`,
         'message.reset-password-success': `You have successfully changed your password!`,
         'message.reset-password-error': `Email & token pair is not valid!`,
+        'message.already-signed-in': `You are already signed in!`,
     }
 }

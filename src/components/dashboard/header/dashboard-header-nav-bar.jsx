@@ -5,6 +5,9 @@ import { HEADER_NAV } from '../../../config/menus/header-nav-config';
 import history from '../../../config/history';
 import { ROUTE_DASHBOARD } from '../../../utils/consts/routing';
 import { FormattedMessage } from 'react-intl';
+import store from '../../../store/store';
+import * as actions from '../../../store/actions';
+import { clearSignIn } from '../../../utils/helper/local-storage';
 
 const { Item, Divider } = Menu;
 
@@ -27,7 +30,10 @@ const DashboardHeaderNavBar = props => {
                     )
                 })}
                 <Divider />
-                <Item key='logout'>
+                <Item key='logout' onClick={() => {
+                    store.dispatch(actions.signOut());
+                    clearSignIn();
+                }}>
                     <Icon type='logout' />
                     <FormattedMessage id='menu.header.user.logout' />
                 </Item>
