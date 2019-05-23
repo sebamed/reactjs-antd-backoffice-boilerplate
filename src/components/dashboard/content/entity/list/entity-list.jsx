@@ -57,6 +57,7 @@ class EntityList extends React.Component {
                     ]}
                     data={this.state.entities}
                     bordered={true}
+                    search={true}
                 />
             </div>
         )

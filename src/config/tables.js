@@ -16,7 +16,8 @@ export class TableConfig {
             {
                 title: <FormattedMessage id='table.column.entity.surname' />,
                 dataIndex: 'name.last',
-                key: 'surname'
+                key: 'surname',
+                searchable: true
             },
             {
                 title: <FormattedMessage id='table.column.entity.email' />,
