@@ -70,6 +70,9 @@ export const en = {
         'message.reset-password-success': `You have successfully changed your password!`,
         'message.reset-password-error': `Email & token pair is not valid!`,
         'message.already-signed-in': `You are already signed in!`,
+
+        'exception.404.description': 'Oops! No data found on that url!',
+        'exception.404.button': 'Back to known',
     },
     pluralRuleFunction(e, t) {
         return t && e === 1 ? "one" : "other";

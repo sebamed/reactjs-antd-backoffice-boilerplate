@@ -40,6 +40,35 @@ b {
 
 
 #dashboard-content {
+    position: relative;
+    height: 100%;
+
+    .exception {
+
+        .content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            h1 {
+                font-size: 56px;
+                font-weight: bolder;
+            }
+
+            h4 {
+                font-size: 20px;
+                margin-top: -20px;
+            }
+        }
+        
+        
+        .image {
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center right;                     
+            height: calc(100vh - 64px);
+        }
+    }
 
     .page-title {
         box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
@@ -145,12 +174,8 @@ b {
             vertical-align: top;
             background: rgba(255, 255, 255, 0.85);
 
-            
-            
             .menu {
                 max-width: 50px;
-
-                
             }
             
         }

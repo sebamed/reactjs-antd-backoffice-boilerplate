@@ -12,7 +12,7 @@ import RadioGroup from 'antd/lib/radio/group';
 import TextArea from 'antd/lib/input/TextArea';
 import CancelButton from '../../../../shared/form/button/back-button';
 import history from '../../../../../config/history';
-import { ROUTE_DASHBOARD_ENTITY_LIST } from '../../../../../utils/consts/routing';
+import { ROUTE_DASHBOARD_ENTITY_LIST, ROUTE_EXCEPTION_404 } from '../../../../../utils/consts/routing';
 
 class EntityEdit extends React.Component {
 
@@ -35,7 +35,7 @@ class EntityEdit extends React.Component {
             })
             .catch(error => {
                 if(error.response.data.status === 404) {
-                    // throw 404 page
+                    history.push(ROUTE_EXCEPTION_404);
                 }
             })
     }
