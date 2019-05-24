@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { ROUTE_AUTH } from '../utils/consts/routing';
+import { getSignIn } from '../utils/helper/local-storage';
 
 const http = axios.create();
 
@@ -7,9 +9,10 @@ const http = axios.create();
  */
 http.interceptors.request.use((config) => {
 
-    /**
-     * Add your request interceptor logic here: setting headers, authorization etc.
-     */
+    if (!config.url.includes(ROUTE_AUTH)) {
+        let token = getSignIn().token;
+        config.headers.Authorization = `Bearer ${token}`;
+    }
 
     return config;
 }, (error) => {
@@ -32,10 +35,6 @@ http.interceptors.response.use((response) => {
 
     return response;
 }, (error) => {
-
-    /**
-     * Add logic for any error from backend
-     */
 
     return Promise.reject(error);
 });

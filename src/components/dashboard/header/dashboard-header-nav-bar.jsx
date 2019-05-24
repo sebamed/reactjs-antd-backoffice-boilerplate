@@ -12,7 +12,7 @@ import { clearSignIn } from '../../../utils/helper/local-storage';
 const { Item, Divider } = Menu;
 
 const DashboardHeaderNavBar = props => {
-    const { sidebarCollapsed, toggleSidebarOpen } = props;
+    const { sidebarCollapsed, toggleSidebarOpen, auth } = props;
 
     const changeLanguage = language => {
         console.log(language)
@@ -83,10 +83,10 @@ const DashboardHeaderNavBar = props => {
                         <Avatar
                             size="small"
                             className='avatar'
-                            src={`https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png`}
+                            src={auth.user && auth.user.avatar ? auth.user.avatar : `https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png`}
                             alt="avatar"
                         />
-                        <span className='name'>John Doe Surname</span>
+                        <span className='name'>{auth.user ? auth.user.email : ''}</span>
                     </span>
                 </DashboardHeaderDropdown>
                 <DashboardHeaderDropdown overlay={langDropdown} placement="bottomRight">

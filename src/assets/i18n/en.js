@@ -48,6 +48,7 @@ export const en = {
         'form.input.placeholder.email': 'Email Adrress',
         'form.input.placeholder.password': 'Password',
         'form.input.placeholder.new-password': 'Choose new password',
+        'form.input.placeholder.search-table': 'Search table...',
 
         'button.sign-in': 'Sign in',
         'button.forgot-password': 'Request new password',
