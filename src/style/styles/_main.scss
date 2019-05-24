@@ -149,6 +149,8 @@ b {
             
             .menu {
                 max-width: 50px;
+
+                
             }
             
         }
@@ -157,11 +159,15 @@ b {
                 display: none;
             }
         }
-        }
-      }  
-
     }
+}  
 
+     
+
+}
+.active-language {
+    background-color: #ebebeb;
+}
 
 #auth-container {
     background-image: url('https://wallpaperaccess.com/full/686998.jpg');

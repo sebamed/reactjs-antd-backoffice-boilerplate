@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Tooltip, Menu, Avatar } from 'antd';
+import { connect } from 'react-redux';
 import DashboardHeaderDropdown from './dashboard-header-dropdown';
 import { HEADER_NAV } from '../../../config/menus/header-nav-config';
 import history from '../../../config/history';
@@ -7,7 +8,7 @@ import { ROUTE_DASHBOARD } from '../../../utils/consts/routing';
 import { FormattedMessage } from 'react-intl';
 import store from '../../../store/store';
 import * as actions from '../../../store/actions';
-import { clearSignIn } from '../../../utils/helper/local-storage';
+import { clearSignIn, changeLang } from '../../../utils/helper/local-storage';
 
 const { Item, Divider } = Menu;
 
@@ -15,7 +16,7 @@ const DashboardHeaderNavBar = props => {
     const { sidebarCollapsed, toggleSidebarOpen, auth } = props;
 
     const changeLanguage = language => {
-        console.log(language)
+        changeLang(language.locale)
     }
 
     const userDropdown = () => {
@@ -46,7 +47,7 @@ const DashboardHeaderNavBar = props => {
             <Menu className='menu' selectedKeys={[]}>
                 {HEADER_NAV.LANGUAGE.map(language => {
                     return (
-                        <Item key={language.id} onClick={() => changeLanguage(language)}>
+                        <Item className={props.lang.locale == language.locale ? 'active-language' : ''} key={language.id} onClick={() => changeLanguage(language)}>
                             <span role="img" aria-label={language.text}>
                                 {language.icon}
                             </span>{' '}
@@ -100,4 +101,11 @@ const DashboardHeaderNavBar = props => {
 
 }
 
-export default DashboardHeaderNavBar;
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+        lang: state.lang
+    }
+}
+
+export default connect(mapStateToProps, null)(DashboardHeaderNavBar);

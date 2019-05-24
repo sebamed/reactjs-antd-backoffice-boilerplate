@@ -1,3 +1,6 @@
+import store from "../../store/store";
+import * as actions from '../../store/actions';
+
 export const insertSignIn = (user, token) => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
@@ -20,4 +23,13 @@ export const getSignIn = () => {
 export const clearSignIn = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+}
+
+export const changeLang = locale => {
+    localStorage.setItem('locale', locale);
+    store.dispatch(actions.changeLanguage(locale));
+}
+
+export const getLang = () => {
+    return localStorage.getItem('locale');
 }
