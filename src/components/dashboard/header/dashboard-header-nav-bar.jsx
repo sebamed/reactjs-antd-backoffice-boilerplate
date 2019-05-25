@@ -72,7 +72,7 @@ const DashboardHeaderNavBar = props => {
                 <Tooltip title='help'>
                     <a
                         target="_blank"
-                        href="https://pro.ant.design/docs/getting-started"
+                        href="https://ant.design/docs/react/introduce"
                         rel="noopener noreferrer"
                         className='action'
                     >

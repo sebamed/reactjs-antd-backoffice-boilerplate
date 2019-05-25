@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
+import { withRouter } from 'react-router-dom';
 import { SIDEBAR_MENU } from '../../../config/menus/sidebar-config';
 import history from '../../../config/history';
 
@@ -21,21 +22,21 @@ const DashboardSiderMenu = props => {
                         }
                     >
                         {item.children.map(child => {
-                           return <Item onClick={() => history.push(child.url)} key={child.id}>{child.icon ? <Icon type={child.icon} /> : null}{child.text}</Item>
+                           return <Item onClick={() => history.push(child.url)} key={child.url}>{child.icon ? <Icon type={child.icon} /> : null}{child.text}</Item>
                         })}
                     </SubMenu>
                 )
             } else {
-                return <Item className='menu-item' onClick={() => history.push(item.url)} key={item.id}>{item.icon ? <Icon type={item.icon} /> : null}{item.text}</Item>
+                return <Item className='menu-item' onClick={() => history.push(item.url)} key={item.url}>{item.icon ? <Icon type={item.icon} /> : null}{item.text}</Item>
             }
         })
     }
 
     return (
-        <Menu theme="light" className='menu' defaultSelectedKeys={[SIDEBAR_MENU[0].id]} mode="inline">
+        <Menu theme="light" className='menu' defaultSelectedKeys={[props.location.pathname]} mode="inline">
             {renderMenu()}
         </Menu>
     )
 }
 
-export default DashboardSiderMenu;
+export default withRouter(DashboardSiderMenu);
