@@ -28,12 +28,44 @@ b {
 
     .logo {
         position: relative;
+        height: 64px;
         overflow: hidden;
+        padding-left: 25px;
+        line-height: 64px;
         background: #fff;
         transition: all 0.3s;
-        height: 64px;
-        // box-shadow: 1px 1px 0 0 rgba(0, 21, 41, 0.35);
-    }
+        img {
+          display: inline-block;
+          height: 32px;
+          vertical-align: middle;
+        }
+        h1 {
+          display: inline-block;
+          margin: 0 0 0 12px;
+          color: #555555;
+          font-weight: 600;
+          font-size: 20px;
+          vertical-align: middle;
+        }
+      }
+
+    // .logo {
+    //     position: relative;
+    //     overflow: hidden;
+    //     transition: all 0.3s;
+    //     height: 64px;
+
+    //     img {
+    //         position: absolute;
+    //         top: 0;
+    //         left: 0;
+    //         width: 100px;
+    //     }
+    //     // background-position: center;
+    //     // background-size: 90%;
+    //     // background-repeat: no-repeat;
+    //     // box-shadow: 1px 1px 0 0 rgba(0, 21, 41, 0.35);
+    // }
 
 
 }
