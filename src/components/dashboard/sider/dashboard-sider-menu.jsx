@@ -13,7 +13,7 @@ const DashboardSiderMenu = props => {
             if (item.children) {
                 return (
                     <SubMenu
-                        key={item.id}
+                        key={item.url + 'url_submenu'}
                         title={
                             <span>
                                 <Icon type={item.icon} />
@@ -22,18 +22,21 @@ const DashboardSiderMenu = props => {
                         }
                     >
                         {item.children.map(child => {
-                           return <Item onClick={() => history.push(child.url)} key={child.url}>{child.icon ? <Icon type={child.icon} /> : null}{child.text}</Item>
+                            return <Item className={props.location.pathname == child.url ? 'ant-menu-item-selected' : ''} onClick={() => history.push(child.url)} key={child.url}>{child.icon ? <Icon type={child.icon} /> : null}{child.text}</Item>
                         })}
                     </SubMenu>
                 )
             } else {
-                return <Item className='menu-item' onClick={() => history.push(item.url)} key={item.url}>{item.icon ? <Icon type={item.icon} /> : null}{item.text}</Item>
+                return <Item className={item.activeUrls.includes(props.location.pathname) ? 'ant-menu-item-selected' : '' } onClick={() => history.push(item.url)} key={item.url}>{item.icon ? <Icon type={item.icon} /> : null}{item.text}</Item>
             }
         })
     }
 
     return (
-        <Menu theme="light" className='menu' selectedKeys={[props.location.pathname]} mode="inline">
+        <Menu
+            theme="light"
+            className='menu'
+            mode="inline">
             {renderMenu()}
         </Menu>
     )
