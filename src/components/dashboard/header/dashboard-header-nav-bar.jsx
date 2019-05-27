@@ -1,11 +1,11 @@
 import React from 'react';
-import { Icon, Tooltip, Menu, Avatar } from 'antd';
+import { Icon, Tooltip, Menu, Avatar, message } from 'antd';
 import { connect } from 'react-redux';
 import DashboardHeaderDropdown from './dashboard-header-dropdown';
 import { HEADER_NAV } from '../../../config/menus/header-nav-config';
 import history from '../../../config/history';
 import { ROUTE_DASHBOARD } from '../../../utils/consts/routing';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import store from '../../../store/store';
 import * as actions from '../../../store/actions';
 import { clearSignIn, changeLang } from '../../../utils/helper/local-storage';
@@ -16,7 +16,10 @@ const DashboardHeaderNavBar = props => {
     const { sidebarCollapsed, toggleSidebarOpen, auth } = props;
 
     const changeLanguage = language => {
+        if(language.locale == props.lang.locale) return;
+        const { intl } = props;
         changeLang(language.locale)
+        message.info(intl.formatMessage({id: 'message.language-changed'}))
     }
 
     const userDropdown = () => {
@@ -108,4 +111,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(DashboardHeaderNavBar);
+export default injectIntl(connect(mapStateToProps, null)(DashboardHeaderNavBar));
