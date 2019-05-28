@@ -12,7 +12,7 @@ export const en = {
 
         'menu.header.user.settings': 'Account Settings',
         'menu.header.user.logout': 'Logout',
-        'menu.header.lang.english': 'English',
+        'menu.header.lang.english': 'Eglish',
         'menu.header.lang.serbian': 'Srpski',
 
         'table.column.entity.name': 'Name',
@@ -72,6 +72,7 @@ export const en = {
         'message.reset-password-success': `You have successfully changed your password!`,
         'message.reset-password-error': `Email & token pair is not valid!`,
         'message.already-signed-in': `You are already signed in!`,
+        'message.language-changed': `Language changed successfully!`,
 
         'exception.404.description': 'Oops! No data found on that url!',
         'exception.404.button': 'Back to known',
