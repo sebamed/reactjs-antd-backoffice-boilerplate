@@ -7,12 +7,12 @@ export const doSort = (a, b) => {
 }
 
 export const doSearch = (query, record, columns = []) => {
-    for(const column of columns) {
+    for (const column of columns) {
         if (column.searchable) {
             const split = column.dataIndex.split('.').reverse();
-            
+
             let retVal = record;
-            
+
             while (split.length > 0) {
                 const prop = split.pop();
                 retVal = retVal[prop];
@@ -21,8 +21,10 @@ export const doSearch = (query, record, columns = []) => {
             if (retVal.toString().toLowerCase().includes(query)) {
                 return true;
             } else {
-                return false;
+                continue;
             }
         }
     }
+
+    return false;
 }
